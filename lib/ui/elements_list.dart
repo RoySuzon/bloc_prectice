@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:testing_project/ui/counter/counter_page.dart';
+import 'package:testing_project/ui/image_picker/image_picker_page.dart';
 import 'package:testing_project/ui/switch/switch_page.dart';
 
 class ElementsList extends StatelessWidget {
@@ -31,6 +32,12 @@ class ElementsList extends StatelessWidget {
               title: 'Switch',
               onTap: () {
                 navigatePage(const SwitchPage());
+              },
+            ),
+            CustomTile(
+              title: 'Image Picke',
+              onTap: () {
+                navigatePage(const ImagePickerPage());
               },
             ),
           ],

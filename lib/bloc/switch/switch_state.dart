@@ -2,10 +2,10 @@
 import 'package:equatable/equatable.dart';
 
 class SwitchState extends Equatable {
-  final bool? isSwitched;
-  final double? slider;
+  final bool isSwitched;
+  final double slider;
 
-  const SwitchState({this.isSwitched = false, this.slider = 0.0});
+  const SwitchState({this.isSwitched = true, this.slider = 1});
 
   @override
   List<Object?> get props => [isSwitched, slider];
