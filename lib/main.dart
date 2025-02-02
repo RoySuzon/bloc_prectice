@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:testing_project/animation.dart';
 import 'package:testing_project/bloc/counter/counter_bloc.dart';
 import 'package:testing_project/bloc/image_picker/image_picker_bloc.dart';
 import 'package:testing_project/bloc/switch/switch_bloc.dart';
