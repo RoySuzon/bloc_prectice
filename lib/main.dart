@@ -6,6 +6,10 @@ import 'package:testing_project/animation.dart';
 import 'package:testing_project/bloc/counter/counter_bloc.dart';
 import 'package:testing_project/bloc/image_picker/image_picker_bloc.dart';
 import 'package:testing_project/bloc/switch/switch_bloc.dart';
+import 'package:testing_project/features/todo/bloc/todo_bloc.dart';
+import 'package:testing_project/features/todo/bloc/todo_event.dart';
+import 'package:testing_project/features/todo/data/repository/todo_repo_impl.dart';
+import 'package:testing_project/features/todo/domain/use_case/todo_use_case.dart';
 import 'package:testing_project/ui/elements_list.dart';
 import 'package:testing_project/utils/image_picker_utils.dart';
 
@@ -24,6 +28,10 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => CounterBloc()),
         BlocProvider(create: (context) => SwitchBloc()),
         BlocProvider(create: (context) => ImagePickerBloc(ImagePickerUtils())),
+        BlocProvider(
+            create: (context) => TodoBloc(TodoUseCase(
+                repo: TodoRepoImpl(todoDataSource: TodoDataSource())))
+              ..add(FetchTodosEvent()))
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
