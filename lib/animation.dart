@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 class ProductDetailsPage extends StatefulWidget {
@@ -44,6 +46,12 @@ class _ProductDetailsPageState extends State<ProductDetailsPage>
   void initState() {
     initAnimation();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 
   /* <<--------->> build method <<---------->> */
