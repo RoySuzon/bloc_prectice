@@ -3,8 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testing_project/features/todo/bloc/todo_bloc.dart';
 import 'package:testing_project/features/todo/bloc/todo_event.dart';
 import 'package:testing_project/features/todo/bloc/todo_state.dart';
-import 'package:testing_project/features/todo/data/repository/todo_repo_impl.dart';
-import 'package:testing_project/features/todo/domain/use_case/todo_use_case.dart';
 
 class TodoView extends StatelessWidget {
   const TodoView({super.key});

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:testing_project/animation.dart';
 import 'package:testing_project/features/todo/presentations/page/todo_view.dart';
 import 'package:testing_project/ui/counter/counter_page.dart';
+import 'package:testing_project/ui/credit_card/credit_card_ui.dart';
 import 'package:testing_project/ui/image_picker/image_picker_page.dart';
 import 'package:testing_project/ui/switch/switch_page.dart';
 
@@ -52,6 +53,12 @@ class ElementsList extends StatelessWidget {
               title: 'Animation',
               onTap: () {
                 navigatePage(const ProductDetailsPage());
+              },
+            ),
+            CustomTile(
+              title: 'Credit Card',
+              onTap: () {
+                navigatePage(const CreditCardUi());
               },
             ),
           ],
