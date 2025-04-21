@@ -4,6 +4,7 @@ import 'package:testing_project/features/todo/presentations/page/todo_view.dart'
 import 'package:testing_project/ui/counter/counter_page.dart';
 import 'package:testing_project/ui/credit_card/credit_card_ui.dart';
 import 'package:testing_project/ui/image_picker/image_picker_page.dart';
+import 'package:testing_project/ui/sliver_app_bar/silver_app_bar.dart';
 import 'package:testing_project/ui/switch/switch_page.dart';
 
 class ElementsList extends StatelessWidget {
@@ -59,6 +60,12 @@ class ElementsList extends StatelessWidget {
               title: 'Credit Card',
               onTap: () {
                 navigatePage(const CreditCardUi());
+              },
+            ),
+            CustomTile(
+              title: 'Sliver App Bar',
+              onTap: () {
+                navigatePage(const SilverAppBarDemo());
               },
             ),
           ],
