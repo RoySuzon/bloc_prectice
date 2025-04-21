@@ -2,18 +2,18 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:testing_project/animation.dart';
-import 'package:testing_project/bloc/counter/counter_bloc.dart';
-import 'package:testing_project/bloc/image_picker/image_picker_bloc.dart';
-import 'package:testing_project/bloc/switch/switch_bloc.dart';
-import 'package:testing_project/features/todo/bloc/todo_bloc.dart';
-import 'package:testing_project/features/todo/bloc/todo_event.dart';
-import 'package:testing_project/features/todo/data/repository/todo_repo_impl.dart';
-import 'package:testing_project/features/todo/domain/use_case/todo_use_case.dart';
-import 'package:testing_project/ui/elements_list.dart';
-import 'package:testing_project/utils/image_picker_utils.dart';
+import 'package:hive/hive.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:testing_project/features/todo/data/datasources/todo_local_datasource.dart';
+import 'package:testing_project/features/todo/data/repositories_impl/todo_repository_impl.dart';
+import 'package:testing_project/features/todo/domain/usecases/get_todos_usecase.dart';
+import 'package:testing_project/features/todo/presentation/bloc/todo_bloc.dart';
+import 'package:testing_project/features/todo/presentation/pages/todo_view.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final appDocDir = await getApplicationDocumentsDirectory();
+  Hive.init(appDocDir.path);
   runApp(const MyApp());
 }
 
@@ -25,21 +25,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => CounterBloc()),
-        BlocProvider(create: (context) => SwitchBloc()),
-        BlocProvider(create: (context) => ImagePickerBloc(ImagePickerUtils())),
         BlocProvider(
-            create: (context) => TodoBloc(TodoUseCase(
-                repo: TodoRepoImpl(todoDataSource: TodoDataSource())))
-              ..add(FetchTodosEvent()))
+          create: (context) =>
+              TodoBloc(GetTodos(TodoRepositoryImpl(TodoLocalDataSourceImpl()))),
+        )
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Todo App',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const ElementsList(),
+        home: TodoView(),
       ),
     );
   }
